@@ -24,7 +24,7 @@ st.title("🔍 k-Means Clustering Visualizer")
 
 # Display section header
 st.subheader("📊 Example Data for Visualization")
-st.markdown("This demo uses example 2D data to illustrate clustering results. The number of clusters is set to 4 by default.")
+st.markdown("This demo uses example 2D data to illustrate clustering results.")
 
 # Set number of clusters to 4 by default
 num_clusters = 4
@@ -44,8 +44,6 @@ y_kmeans = loaded_model.predict(X)
 plt.figure(figsize=(8, 6))
 plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
 plt.title(f'K-Means Clustering (k={num_clusters})')
-plt.xlabel('Feature 1')
-plt.ylabel('Feature 2')
 
 # Display cluster centers with red circles
 centers = loaded_model.cluster_centers_
