@@ -17,18 +17,14 @@ with open('kmeans_model.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
 
 # Set Streamlit page configuration
-st.set_page_config(page_title="k-Means Clustering Visualizer", layout="wide")
+st.set_page_config(page_title="K-Means Clustering App", layout="centered")
 
-# Title and Subheader with emojis
-col1, col2 = st.columns([1, 3])
-with col1:
-    st.image("https://image.shutterstock.com/image-vector/search-icon-design-template-vector-260nw-1011306231.jpg", width=60)
-with col2:
-    st.title("🔍 k-Means Clustering Visualizer")
+# Title
+st.title("🔍 k-Means Clustering Visualizer")
 
 # Display section header
 st.subheader("📊 Example Data for Visualization")
-st.markdown("This demo uses example 2D data to illustrate clustering results. Adjust the number of clusters or upload your own dataset.")
+st.markdown("This demo uses example 2D data to illustrate clustering results. You can adjust the number of clusters or upload your own dataset.")
 
 # Sidebar for user interaction
 st.sidebar.header("Adjust Parameters")
@@ -55,17 +51,18 @@ else:
 # Predict cluster labels
 y_kmeans = loaded_model.predict(X)
 
-# Plot clusters with better formatting
-plt.figure(figsize=(10, 8))
-scatter = plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
-centers = loaded_model.cluster_centers_
-plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='x', label="Centroids")
-
+# Plot clusters
+plt.figure(figsize=(8, 6))
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
 plt.title(f'K-Means Clustering (k={num_clusters})')
 plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
+
+# Display cluster centers
+centers = loaded_model.cluster_centers_
+plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='x', label="Centroids")
+
 plt.legend()
-plt.colorbar(scatter)
 st.pyplot(plt)
 
 # Display summary information
