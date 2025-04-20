@@ -20,13 +20,22 @@ with open('kmeans_model.pkl', 'rb') as f:
 st.set_page_config(page_title="K-Means Clustering App", layout="centered")
 
 # Title
-st.title("🔍 K-Means Clustering Visualizer by Kittiphot Polaha")
+st.title("🔍 k-Means Clustering Visualizer")
+
+# Display section header
+st.subheader("📊 Example Data for Visualization")
+st.markdown("This demo uses example 2D data to illustrate clustering results. The number of clusters is set to 4 by default.")
 
 # Set number of clusters to 4 by default
 num_clusters = 4
 
-#load dataset
-x, _=make_blobs(n_sample=300, centers=loaded_model.n_clusters, cluster_std=0.60, random_state=0)
+# Generate synthetic data
+X, _ = make_blobs(
+    n_samples=300,
+    centers=num_clusters,  # Fixed number of centers
+    cluster_std=0.60,
+    random_state=0
+)
 
 # Predict cluster labels
 y_kmeans = loaded_model.predict(X)
@@ -35,6 +44,8 @@ y_kmeans = loaded_model.predict(X)
 plt.figure(figsize=(8, 6))
 plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50, cmap='viridis')
 plt.title(f'K-Means Clustering (k={num_clusters})')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
 
 # Display cluster centers with red circles
 centers = loaded_model.cluster_centers_
