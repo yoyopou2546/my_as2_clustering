@@ -20,10 +20,10 @@ with open('kmeans_model.pkl', 'rb') as f:
 st.set_page_config(page_title="K-Means Clustering App", layout="centered")
 
 # Title
-st.title("🔍 K-Means Clustering Visualizer by Kittiphot Polaha")
+st.title("K-Means Clustering Visualizer by Kittiphot Polaha")
 
 # Display section header
-st.subheader("📊 Example Data for Visualization")
+st.subheader("Example Data for Visualization")
 st.markdown("This demo uses example (2D) data to illustrate clustering results.")
 
 # Set number of clusters to 4 by default
