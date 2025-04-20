@@ -58,9 +58,9 @@ plt.title(f'K-Means Clustering (k={num_clusters})')
 plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 
-# Display cluster centers
+# Display cluster centers with red circles
 centers = loaded_model.cluster_centers_
-plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='x', label="Centroids")
+plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='o', label="Centroids")  # Changed marker to 'o'
 
 plt.legend()
 st.pyplot(plt)
