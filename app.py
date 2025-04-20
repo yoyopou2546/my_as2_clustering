@@ -53,9 +53,3 @@ plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, alpha=0.5, marker='o',
 
 plt.legend()
 st.pyplot(plt)
-
-# Display summary information
-st.subheader("Cluster Information")
-st.write(f"Number of clusters: {num_clusters}")
-st.write("Cluster centers:")
-st.write(centers)
