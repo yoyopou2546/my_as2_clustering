@@ -24,16 +24,15 @@ st.title("🔍 k-Means Clustering Visualizer")
 
 # Display section header
 st.subheader("📊 Example Data for Visualization")
-st.markdown("This demo uses example 2D data to illustrate clustering results. You can adjust the number of clusters.")
+st.markdown("This demo uses example 2D data to illustrate clustering results. The number of clusters is set to 4 by default.")
 
-# Sidebar for user interaction
-st.sidebar.header("Adjust Parameters")
-num_clusters = st.sidebar.slider("Number of clusters", min_value=1, max_value=10, value=loaded_model.n_clusters)
+# Set number of clusters to 4 by default
+num_clusters = 4
 
 # Generate synthetic data
 X, _ = make_blobs(
     n_samples=300,
-    centers=num_clusters,  # Adjust the number of centers dynamically
+    centers=num_clusters,  # Fixed number of centers
     cluster_std=0.60,
     random_state=0
 )
